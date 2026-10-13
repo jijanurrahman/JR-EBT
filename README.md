@@ -219,6 +219,41 @@ JR-EBT/
 
 ---
 
+## 📱 App Screenshots
+
+<table align="center">
+  <tr>
+    <td align="center" width="33%">
+      <b>Dashboard</b><br/><br/>
+      <img src="./assets/screenshots/dashboard.png" width="100%" alt="Dashboard Screen" />
+    </td>
+    <td align="center" width="33%">
+      <b>Transactions</b><br/><br/>
+      <img src="./assets/screenshots/transactions.png" width="100%" alt="Transactions Screen" />
+    </td>
+    <td align="center" width="33%">
+      <b>Budgets</b><br/><br/>
+      <img src="./assets/screenshots/budgets.png" width="100%" alt="Budgets Screen" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <b>Reports & Analytics</b><br/><br/>
+      <img src="./assets/screenshots/reports.png" width="100%" alt="Reports & Analytics Screen" />
+    </td>
+    <td align="center" width="33%">
+      <b>Settings & Security</b><br/><br/>
+      <img src="./assets/screenshots/settings.png" width="100%" alt="Settings Screen" />
+    </td>
+    <td align="center" width="33%">
+      <b>Manage Categories</b><br/><br/>
+      <img src="./assets/screenshots/categories.png" width="100%" alt="Manage Categories Screen" />
+    </td>
+  </tr>
+</table>
+
+---
+
 ## 📄 License
 
 This project is open-source and available under the [MIT License](LICENSE).
