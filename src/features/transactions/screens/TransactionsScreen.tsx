@@ -22,7 +22,7 @@ import { DayGroup, useTransactions } from '../hooks/useTransactions';
 
 export function TransactionsScreen() {
   const { colors, spacing, typography, radii } = useAppTheme();
-  const { selectedMonth, nextMonth, previousMonth, transactionsVersion } =
+  const { selectedMonth, nextMonth, previousMonth, transactionsVersion, currency: _currency } =
     useUIStore();
 
   const [search, setSearch] = useState('');

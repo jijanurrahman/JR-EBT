@@ -27,7 +27,7 @@ import { TransactionItem } from '../components/TransactionItem';
 
 export function DashboardScreen() {
   const { colors, spacing, typography, radii } = useAppTheme();
-  const { selectedMonth, nextMonth, previousMonth, transactionsVersion } =
+  const { selectedMonth, nextMonth, previousMonth, transactionsVersion, currency: _currency } =
     useUIStore();
 
   const [summary, setSummary] = useState<MonthlySummary>({

@@ -29,7 +29,7 @@ type ReportTab = 'expense' | 'income';
 
 export function ReportsScreen() {
   const { colors, spacing, typography, radii } = useAppTheme();
-  const { selectedMonth, nextMonth, previousMonth, transactionsVersion } =
+  const { selectedMonth, nextMonth, previousMonth, transactionsVersion, currency: _currency } =
     useUIStore();
 
   const [activeTab, setActiveTab] = useState<ReportTab>('expense');

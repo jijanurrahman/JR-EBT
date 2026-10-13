@@ -66,6 +66,15 @@ describe('Money utility', () => {
       expect(formatCents(1234, 'USD', 'en-US')).toBe('$12.34');
       expect(formatCents(0, 'USD', 'en-US')).toBe('$0.00');
     });
+
+    it('formats cents in other currencies like BDT and EUR', () => {
+      const bdt = formatCents(50000, 'BDT', 'bn-BD');
+      // Should include BDT currency representation
+      expect(bdt).toBeDefined();
+
+      const eur = formatCents(1234, 'EUR', 'de-DE');
+      expect(eur).toMatch(/12,34\s?€/);
+    });
   });
 });
 

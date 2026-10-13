@@ -24,7 +24,7 @@ import { BudgetItem } from '../components/BudgetItem';
 
 export function BudgetsScreen() {
   const { colors, spacing, radii, typography } = useAppTheme();
-  const { selectedMonth, nextMonth, previousMonth, transactionsVersion } =
+  const { selectedMonth, nextMonth, previousMonth, transactionsVersion, currency: _currency } =
     useUIStore();
 
   const [budgets, setBudgets] = useState<BudgetWithCategory[]>([]);

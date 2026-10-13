@@ -34,6 +34,7 @@ import {
 
 export function RecurringFormModal() {
   const { colors, spacing, radii, typography } = useAppTheme();
+  const { currencySymbol } = useUIStore();
   const [rules, setRules] = useState<RecurringRuleWithCategory[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [showForm, setShowForm] = useState(false);
@@ -233,7 +234,7 @@ export function RecurringFormModal() {
                 <TextField
                   label="Amount"
                   placeholder="0.00"
-                  prefix="$"
+                  prefix={currencySymbol}
                   keyboardType="decimal-pad"
                   value={value}
                   onChangeText={onChange}

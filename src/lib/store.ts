@@ -10,6 +10,9 @@ interface UIState {
   setIsAppLocked: (locked: boolean) => void;
   transactionsVersion: number;
   bumpTransactionsVersion: () => void;
+  currency: string;
+  currencySymbol: string;
+  setCurrency: (code: string, symbol?: string) => void;
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -24,5 +27,9 @@ export const useUIStore = create<UIState>((set) => ({
   transactionsVersion: 0,
   bumpTransactionsVersion: () =>
     set((state) => ({ transactionsVersion: state.transactionsVersion + 1 })),
+  currency: 'USD',
+  currencySymbol: '$',
+  setCurrency: (code: string, symbol = '$') =>
+    set({ currency: code, currencySymbol: symbol }),
 }));
 

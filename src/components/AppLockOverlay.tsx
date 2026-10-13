@@ -12,13 +12,31 @@ export function AppLockOverlay() {
 
   const attemptUnlock = useCallback(async () => {
     try {
+      // 1. Force fingerprint sensor first
       const result = await LocalAuthentication.authenticateAsync({
         promptMessage: 'Unlock JR-EBT',
-        cancelLabel: 'Cancel',
-        disableDeviceFallback: false,
+        promptSubtitle: 'Touch the fingerprint sensor to unlock',
+        cancelLabel: 'Use PIN / Password',
+        disableDeviceFallback: true,
+        biometricsSecurityLevel: 'strong',
       });
+
       if (result.success) {
         setIsAppLocked(false);
+        return;
+      }
+
+      // 2. Allow device passcode fallback if user selects "Use PIN / Password"
+      if (result.error === 'user_cancel') {
+        const fallbackResult = await LocalAuthentication.authenticateAsync({
+          promptMessage: 'Unlock with PIN / Password',
+          cancelLabel: 'Cancel',
+          disableDeviceFallback: false,
+        });
+
+        if (fallbackResult.success) {
+          setIsAppLocked(false);
+        }
       }
     } catch (err) {
       console.warn('Auth error:', err);

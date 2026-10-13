@@ -34,6 +34,7 @@ import {
 
 export function TransactionFormModal() {
   const { colors, spacing, radii, typography } = useAppTheme();
+  const { currencySymbol } = useUIStore();
   const params = useLocalSearchParams<{ id?: string; type?: 'income' | 'expense' }>();
   const isEditing = Boolean(params.id);
   const transactionId = params.id ? parseInt(params.id, 10) : undefined;
@@ -268,7 +269,7 @@ export function TransactionFormModal() {
             <TextField
               label="Amount"
               placeholder="0.00"
-              prefix="$"
+              prefix={currencySymbol}
               keyboardType="decimal-pad"
               value={value}
               onBlur={onBlur}

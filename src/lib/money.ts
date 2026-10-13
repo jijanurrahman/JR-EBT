@@ -41,26 +41,34 @@ export function centsToDecimalString(cents: number): string {
   return isNegative ? `-${formatted}` : formatted;
 }
 
+import { useUIStore } from './store';
+import { getCurrencyInfo } from './currencies';
+
 /**
  * Formats integer cents into a localized currency string using Intl.NumberFormat.
+ * If currencyCode and locale are not explicitly supplied, defaults to the user's active currency setting.
  */
 export function formatCents(
   cents: number,
-  currencyCode = 'USD',
-  locale = 'en-US',
+  currencyCode?: string,
+  locale?: string,
 ): string {
+  const activeCode = currencyCode || useUIStore.getState().currency || 'USD';
+  const info = getCurrencyInfo(activeCode);
+  const activeLocale = locale || info.locale;
+
   const decimalValue = cents / 100;
   try {
-    return new Intl.NumberFormat(locale, {
+    return new Intl.NumberFormat(activeLocale, {
       style: 'currency',
-      currency: currencyCode,
+      currency: activeCode,
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(decimalValue);
   } catch {
     // Fallback if locale or currency code is unsupported
     const sign = cents < 0 ? '-' : '';
-    return `${sign}$${centsToDecimalString(Math.abs(cents))}`;
+    return `${sign}${info.symbol}${centsToDecimalString(Math.abs(cents))}`;
   }
 }
 

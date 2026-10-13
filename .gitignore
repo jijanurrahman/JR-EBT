@@ -67,6 +67,7 @@ coverage/
 !.vscode/settings.json
 !.vscode/extensions.json
 .claude/
+AGENTS.md
 
 # Continuous Native Generation (CNG)
 /ios

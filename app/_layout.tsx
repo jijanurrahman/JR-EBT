@@ -8,6 +8,8 @@ import { getDatabase } from '@/db';
 import { AppLockOverlay } from '@/components';
 import { processRecurringRules } from '@/features/recurring/engine';
 import { useUIStore } from '@/lib/store';
+import { getSetting } from '@/db/queries';
+import { getCurrencyInfo } from '@/lib/currencies';
 
 export default function RootLayout() {
   const { colors, isDark } = useAppTheme();
@@ -18,12 +20,16 @@ export default function RootLayout() {
     getDatabase()
       .then(async () => {
         try {
+          const savedCurrency = await getSetting('currency', 'USD');
+          const info = getCurrencyInfo(savedCurrency);
+          useUIStore.getState().setCurrency(info.code, info.symbol);
+
           const generated = await processRecurringRules();
           if (generated > 0) {
             useUIStore.getState().bumpTransactionsVersion();
           }
         } catch (e) {
-          console.warn('Failed to process recurring transactions:', e);
+          console.warn('Failed to initialize app settings/rules:', e);
         }
         if (isMounted) setDbReady(true);
       })
