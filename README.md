@@ -49,9 +49,14 @@ Direct download for the latest Android build:
   - Create rules with Daily, Weekly, Monthly, or Yearly frequencies.
   - Automatic catch-up generator processes overdue items upon app launch.
   - Rule management with Pause, Resume, Delete, and manual execution triggers.
-- **🔐 Biometric App Lock:**
-  - Lock your financial data behind device Fingerprint / Face ID (`expo-local-authentication`).
-  - On-demand test button in settings to verify biometric hardware.
+- **🌍 Multi-Currency & Country Selector:**
+  - Support for 13+ global currencies (USD `$`, BDT `৳`, EUR `€`, GBP `£`, INR `₹`, CAD `CA$`, AUD `A$`, JPY `¥`, AED `د.إ`, SAR `﷼`, PKR `₨`, SGD `S$`, MYR `RM`).
+  - Switch preferred currency anytime from Settings with instant reactive formatting across Dashboard, Transactions, Budgets, Reports, and input fields.
+  - Automatically persisted in local SQLite storage.
+- **🔐 Enhanced Biometric App Lock:**
+  - Secure your financial data behind device Fingerprint sensor or Face ID (`expo-local-authentication`).
+  - Prioritizes fingerprint sensor authentication directly on hardware with PIN/password fallback protection.
+  - On-demand hardware test button in Settings.
 - **📤 Data Export (CSV):**
   - Export monthly or lifetime transaction history into CSV formatted files.
   - Native share sheet integration (`expo-sharing`) for WhatsApp, Email, Google Drive, and local save.
